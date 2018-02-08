@@ -40,7 +40,7 @@ motordirection = -1;
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="0">
+    <event eventtype="3" enumb="2">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -79,7 +79,7 @@ if (angle &lt; 0) angle += 360;
 angle = angle % 360;
 image_angle = angle;
 
-visible = !instance_exists(objBossRoom) &amp;&amp; (keyboard_check_direct(vk_lalt) || selected);
+visible = !instance_exists(objBossRoom) &amp;&amp; (keyboard_check_direct(vk_lcontrol) || selected);
 
 if (selected) image_single = 1;
 else image_single = 0;

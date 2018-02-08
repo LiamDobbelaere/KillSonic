@@ -10,6 +10,11 @@
     <sound>sound\sndSonicJump</sound>
     <sound>sound\sndBossHit</sound>
     <sound>sound\sndRing</sound>
+    <sound>sound\sndRingLoss</sound>
+    <sound>sound\sndSonicDie</sound>
+    <sound>sound\sndStageClear</sound>
+    <sound>sound\sndLaser</sound>
+    <sound>sound\sndEggDefeat</sound>
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\sprEggBase01</sprite>
@@ -27,9 +32,15 @@
     <sprite>sprites\sprSonicWalk</sprite>
     <sprite>sprites\sprSonicRun</sprite>
     <sprite>sprites\sprSonicJump</sprite>
+    <sprite>sprites\sprSonicHurt</sprite>
+    <sprite>sprites\sprSonicDie</sprite>
     <sprite>sprites\sprRing</sprite>
     <sprite>sprites\sprRingPickup</sprite>
     <sprite>sprites\sprEmeraldBlock</sprite>
+    <sprite>sprites\sprFontOutline</sprite>
+    <sprite>sprites\sprLaserBeam</sprite>
+    <sprite>sprites\sprLaserHit</sprite>
+    <sprite>sprites\sprExplosion</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bgWorkshop</background>
@@ -66,6 +77,9 @@
     <object>objects\objWall</object>
     <object>objects\objRing</object>
     <object>objects\objRingPickup</object>
+    <object>objects\objLaserBeam</object>
+    <object>objects\objLaserHit</object>
+    <object>objects\objExplosion</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rmGlobals</room>

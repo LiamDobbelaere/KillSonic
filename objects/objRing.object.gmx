@@ -95,8 +95,13 @@ if (x &lt; -16) instance_destroy();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>audio_play_sound(sndRing, 1, false);
+            <string>with (other) {
+    rings++;
+}
+
+audio_play_sound(sndRing, 1, false);
 instance_destroy();
+
 </string>
           </argument>
         </arguments>
