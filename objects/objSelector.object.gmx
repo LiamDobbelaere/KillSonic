@@ -71,8 +71,8 @@ current_option = 0;
             <string>sprite_index = options_sprites[current_option];
 //var spr = options_sprites[current_option];
 
-x = room_width - (sprite_get_width(sprite_index) - sprite_get_xoffset(sprite_index));
-y = room_height - (sprite_get_height(sprite_index) - sprite_get_yoffset(sprite_index));
+//x = room_width - (sprite_get_width(sprite_index) - sprite_get_xoffset(sprite_index));
+//y = room_height - (sprite_get_height(sprite_index) - sprite_get_yoffset(sprite_index));
 
 </string>
           </argument>
@@ -97,7 +97,14 @@ y = room_height - (sprite_get_height(sprite_index) - sprite_get_yoffset(sprite_i
           <argument>
             <kind>1</kind>
             <string>var spr = sprite_index;
+var ox = sprite_get_xoffset(spr);
+var oy = sprite_get_yoffset(spr);
+var w = sprite_get_width(spr);
+var h = sprite_get_height(spr);
 
+draw_sprite(sprite_index, -1, x, y);
+
+/*
 draw_set_color(c_black);
 draw_set_alpha(0.7);
 draw_rectangle_color(x - sprite_get_xoffset(spr),  
@@ -118,7 +125,7 @@ true);
 
 draw_set_color(c_black);
 draw_set_alpha(1);
-
+*/
 //draw_sprite(spr, 0, x, y);
 </string>
           </argument>

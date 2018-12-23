@@ -38,20 +38,51 @@
     <sprite>sprites\sprRingPickup</sprite>
     <sprite>sprites\sprEmeraldBlock</sprite>
     <sprite>sprites\sprFontOutline</sprite>
+    <sprite>sprites\sprFontSonic</sprite>
     <sprite>sprites\sprLaserBeam</sprite>
     <sprite>sprites\sprLaserHit</sprite>
     <sprite>sprites\sprExplosion</sprite>
+    <sprite>sprites\sprChemicalPlantBlock</sprite>
+    <sprite>sprites\sprGround</sprite>
+    <sprite>sprites\sprite26</sprite>
+    <sprite>sprites\sprite27</sprite>
+    <sprite>sprites\sprite28</sprite>
+    <sprite>sprites\sprTailsWalk</sprite>
+    <sprite>sprites\sprTailsRun</sprite>
+    <sprite>sprites\sprTailsJump</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bgWorkshop</background>
     <background>background\bgWorkshopFloor</background>
     <background>background\bgEmeraldHill</background>
+    <background>background\bgChemicalPlant</background>
+    <background>background\bgChemicalPlant2</background>
     <background>background\bgEmeraldHill2</background>
+    <background>background\bgChemicalBlock</background>
+    <background>background\bgChemicalGrass</background>
+    <background>background\bgChemicalAqua</background>
+    <background>background\bgChemicalCave</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\create_attachment.gml</script>
     <script>scripts\point_angle.gml</script>
+    <script>scripts\ai_initialize.gml</script>
+    <script>scripts\ai_think.gml</script>
+    <script>scripts\ai_move_left.gml</script>
+    <script>scripts\ai_move_right.gml</script>
+    <script>scripts\ai_avoid_eggman.gml</script>
+    <script>scripts\ai_move_towards_eggman.gml</script>
+    <script>scripts\ai_vulnerable.gml</script>
+    <script>scripts\ai_closest_hazard.gml</script>
+    <script>scripts\ai_is_eggman_above.gml</script>
+    <script>scripts\ai_dodge_hazards.gml</script>
+    <script>scripts\ai_collect_rings.gml</script>
+    <script>scripts\ai_dodge_laserhits.gml</script>
+    <script>scripts\ai_dodge_lasers.gml</script>
+    <script>scripts\ai_reinforce_momentum.gml</script>
+    <script>scripts\ai_close_to_left_edge.gml</script>
+    <script>scripts\ai_edge_boundaries.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fntText</font>
@@ -72,7 +103,7 @@
     <object>objects\objSpike</object>
     <object>objects\objSelector</object>
     <object>objects\objBossRoom</object>
-    <object>objects\objEmeraldFloor</object>
+    <object>objects\objLevelFloor</object>
     <object>objects\objSonic</object>
     <object>objects\objWall</object>
     <object>objects\objRing</object>
@@ -80,6 +111,8 @@
     <object>objects\objLaserBeam</object>
     <object>objects\objLaserHit</object>
     <object>objects\objExplosion</object>
+    <object>objects\objGround</object>
+    <object>objects\objRingLine</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rmGlobals</room>
