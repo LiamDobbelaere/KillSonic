@@ -12,6 +12,7 @@
   <showcolour>-1</showcolour>
   <code>global.enablemotors = false;
 global.spawner_rings = 0;
+global.play_against_flag = 0;
 
 global.floor_sprite = sprChemicalPlantBlock;
 

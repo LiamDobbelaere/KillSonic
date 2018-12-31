@@ -43,8 +43,8 @@ ai_initialize()
 
 image_speed = 0;
 
-tails = false;
-
+fire_once = false
+    
 </string>
           </argument>
         </arguments>
@@ -141,6 +141,20 @@ audio_play_sound(sndStageClear, 1, false);
           <argument>
             <kind>1</kind>
             <string>///Character skin setter
+if (!fire_once) {
+    tails = false;
+
+    if (global.play_against_flag == 1) {
+        tails = true;
+    } else if (global.play_against_flag == 2) {
+        var i = instance_create(x, y, objSonic);
+        i.tails = true;
+        i.fire_once = true;
+    }
+
+    fire_once = true;
+}
+
 if (tails) {
     sprite_walk = sprTailsWalk
     sprite_run = sprTailsRun
@@ -482,6 +496,7 @@ if (rings &gt; 0) {
 
 draw_set_alpha(1);
 draw_set_font(global.font_outline);
+draw_set_halign(fa_left);
 draw_set_color(c_aqua);
 draw_text_transformed(8, 8, "SONICS EGG-NAV 2", 4, 4, 0);
 draw_set_color(c_lime);

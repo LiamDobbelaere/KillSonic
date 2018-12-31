@@ -2,7 +2,7 @@
 <object>
   <spriteName>sprAttachPoint</spriteName>
   <solid>0</solid>
-  <visible>0</visible>
+  <visible>-1</visible>
   <depth>-9999</depth>
   <persistent>-1</persistent>
   <parentName>&lt;undefined&gt;</parentName>
@@ -34,7 +34,7 @@ selected = false;
 hovering = false;
 
 motorspeed = 0;
-motordirection = -1;
+motordirection = 1;
 </string>
           </argument>
         </arguments>
@@ -72,14 +72,14 @@ if (attachment != noone) {
 }
 
 if (global.enablemotors)
-    angle += motorspeed * motordirection;
+    angle += motorspeed * (motordirection * -1);
 else angle = targetangle;
 
 if (angle &lt; 0) angle += 360;
 angle = angle % 360;
 image_angle = angle;
 
-visible = !instance_exists(objBossRoom) &amp;&amp; (keyboard_check_direct(vk_lcontrol) || selected);
+visible = !instance_exists(objBossRoom)// &amp;&amp; (keyboard_check_direct(vk_lcontrol) || selected);
 
 if (selected) image_single = 1;
 else image_single = 0;
@@ -108,10 +108,10 @@ else image_single = 0;
             <string>if (instance_exists(objBossRoom)) exit;
 if (!hovering) exit;
 
-if (selected) {
+//if (selected) {
     angle-=5;
     targetangle = angle;
-}
+//}
 </string>
           </argument>
         </arguments>
@@ -137,10 +137,10 @@ if (selected) {
             <string>if (instance_exists(objBossRoom)) exit;
 if (!hovering) exit;
 
-if (selected) {
+//if (selected) {
     angle+=5;
     targetangle = angle;
-}
+//}
 </string>
           </argument>
         </arguments>
@@ -210,7 +210,7 @@ if (selected) {
           <argument>
             <kind>1</kind>
             <string>if (instance_exists(objBossRoom)) exit;
-if (!selected || attachment != noone) exit;
+if (/*!selected ||*/ attachment != noone) exit;
 
 attachment = instance_create(x, y, asset_get_index(objSelector.options[objSelector.current_option]));
 //attachment.parent = parent;
@@ -238,6 +238,14 @@ attachment.angle = angle;
           <argument>
             <kind>1</kind>
             <string>if (instance_exists(objBossRoom)) exit;
+
+if (motordirection == 1) {
+    objWMotorDir.my_sub = 0
+} else {
+    objWMotorDir.my_sub = 1
+}
+
+objMotorSlider.x = objMotorSlider.xstart + (motorspeed / 16 * 256)
 
 if (!selected) {
     with (objAttachPoint) { selected  = false; }
@@ -270,16 +278,20 @@ if (!selected) {
             <kind>1</kind>
             <string>draw_self();
 
-if (!selected) exit;
+if (selected) {
+    var str = string(angle) + "deg, motor:" + string(motorspeed * motordirection)
+    
+    draw_set_font(fntText);
+    draw_set_color(c_black);
+    draw_text(x - 31, y - 31, str);
+    draw_text(x - 33, y - 33, str);
+    draw_set_color(c_yellow);
+    draw_text(x - 32, y - 32, str);
+}
 
-var str = string(angle) + "deg, motor:" + string(motorspeed * motordirection)
-
-draw_set_font(fntText);
-draw_set_color(c_black);
-draw_text(x - 31, y - 31, str);
-draw_text(x - 33, y - 33, str);
-draw_set_color(c_yellow);
-draw_text(x - 32, y - 32, str);
+if (hovering &amp;&amp; attachment == noone) {
+    draw_sprite_ext(objSelector.options_sprites[objSelector.current_option], 0, x, y, 1, 1,  parent.angle + angle, c_white, 0.5);
+}
 </string>
           </argument>
         </arguments>

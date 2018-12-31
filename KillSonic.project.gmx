@@ -50,6 +50,11 @@
     <sprite>sprites\sprTailsWalk</sprite>
     <sprite>sprites\sprTailsRun</sprite>
     <sprite>sprites\sprTailsJump</sprite>
+    <sprite>sprites\sprMapNode</sprite>
+    <sprite>sprites\sprSliderKnob</sprite>
+    <sprite>sprites\sprCharSel</sprite>
+    <sprite>sprites\sprMotorDir</sprite>
+    <sprite>sprites\sprShimmer</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bgWorkshop</background>
@@ -62,6 +67,7 @@
     <background>background\bgChemicalGrass</background>
     <background>background\bgChemicalAqua</background>
     <background>background\bgChemicalCave</background>
+    <background>background\bgMapTiles</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -113,11 +119,18 @@
     <object>objects\objExplosion</object>
     <object>objects\objGround</object>
     <object>objects\objRingLine</object>
+    <object>objects\objMapCamera</object>
+    <object>objects\objMapNode</object>
+    <object>objects\objMap</object>
+    <object>objects\objWCharSel</object>
+    <object>objects\objWMotorDir</object>
+    <object>objects\objMotorSlider</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rmGlobals</room>
     <room>rooms\rmWorkshop</room>
     <room>rooms\rmBoss</room>
+    <room>rooms\rmMap</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

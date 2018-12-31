@@ -58,6 +58,7 @@ global.enablemotors = false;
           <argument>
             <kind>1</kind>
             <string>draw_set_font(global.font_outline);
+draw_set_halign(fa_left);
 draw_set_color(c_white);
 draw_text(8, 8, 
 "EDITOR CONTROLS
