@@ -93,6 +93,8 @@
     <script>scripts\ai_edge_boundaries.gml</script>
     <script>scripts\boss_save.gml</script>
     <script>scripts\attachment_save.gml</script>
+    <script>scripts\boss_load.gml</script>
+    <script>scripts\attachment_load.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fntText</font>
