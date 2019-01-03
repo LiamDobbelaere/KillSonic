@@ -44,86 +44,67 @@ ai_initialize()
 image_speed = 0;
 
 fire_once = false
-    
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="2">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>with (objBossRoom) {
-    event_user(0);
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="1">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Stage clear
-audio_stop_sound(sndBossBattle);
-audio_play_sound(sndStageClear, 1, false);
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>flash = false;
+
+alarm_0_t = 0;
+alarm_0_f = true;
+
+alarm_1_t = 0;
+alarm_1_f = true;
+
+alarm_2_t = 0;
+alarm_2_f = true;
 </string>
           </argument>
         </arguments>
       </action>
     </event>
     <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Alarms
+
+alarm_0_t -= global.dt;
+if (alarm_0_t &lt;= 0 &amp;&amp; !alarm_0_f) {
+    flash = false;
+
+    alarm_0_f = true;
+}
+
+alarm_1_t -= global.dt;
+if (alarm_1_t &lt;= 0 &amp;&amp; !alarm_1_f) {
+    ///Stage clear
+    audio_stop_sound(sndBossBattle);
+    audio_play_sound(sndStageClear, 1, false);    
+
+    alarm_1_f = true;
+}
+
+alarm_2_t -= global.dt;
+if (alarm_2_t &lt;= 0 &amp;&amp; !alarm_2_f) {
+    with (objBossRoom) {
+        event_user(0);
+    }
+
+    alarm_2_f = true;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -192,7 +173,7 @@ if (!dead) {
     key_right = 0;
     key_jump = 0;
     
-    ai_think()
+    if (global.sonic_ai_flag == 1 &amp;&amp; !tails || global.tails_ai_flag == 1 &amp;&amp; tails) ai_think()
     
     if (!grounded_since_flash) {
         key_left = 0;
@@ -200,18 +181,26 @@ if (!dead) {
         key_jump = 0;
     }
     
-    //key_left = -keyboard_check(vk_left);
-    //key_right = keyboard_check(vk_right);
-    //key_jump = keyboard_check_pressed(vk_space);
+    if (global.sonic_ai_flag == 0 &amp;&amp; !tails || global.tails_ai_flag == 0 &amp;&amp; tails) {
+        if (tails &amp;&amp; global.play_against_flag == 2) {
+            key_left = -keyboard_check(ord("Q"));
+            key_right = keyboard_check(ord("D"));
+            key_jump = keyboard_check_pressed(vk_lshift);    
+        } else {
+            key_left = -keyboard_check(vk_left);
+            key_right = keyboard_check(vk_right);
+            key_jump = keyboard_check_pressed(vk_space);    
+        }
+    }
     
     move = key_left + key_right;
     
     if (grounded)
-    hsp = lerp(hsp, move * movespeed, 0.06) - 0.5;
+    hsp = lerp(hsp, move * movespeed, 1.8 * global.dt) - 30*0.5*global.dt; //0.06 for 30fps
     else
-    hsp = lerp(hsp, move * movespeed, 0.2) - 0.5;
+    hsp = lerp(hsp, move * movespeed, 6 * global.dt) - 30*0.5*global.dt; //0.2 for 30fps
     
-    if (vsp &lt; 10) vsp += grav;
+    if (vsp &lt; 10) vsp += (30 * grav) * global.dt;
     
     if (place_meeting(x, y + 1, objWall)) {
         vsp = key_jump * -jumpspeed;
@@ -228,18 +217,18 @@ if (!dead) {
     
     if (place_meeting(x + hsp, y, objWall)) {
         while (!place_meeting(x + sign(hsp), y, objWall)) {
-            x += sign(hsp);
+            x += (30 * sign(hsp)) * global.dt;
         }
         
         hsp = 0;
     }
     
-    x += hsp;
+    x += (30 * hsp) * global.dt;
     x = clamp(x, 10, room_width - 10);
     
     if (place_meeting(x, y + vsp, objWall)) {
         while (!place_meeting(x, y + sign(vsp), objWall)) {
-            y += sign(vsp);
+            y += (30 * sign(vsp)) * global.dt;
         }
         
         vsp = 0;
@@ -250,7 +239,8 @@ if (!dead) {
             objEggBase01.bhealth--;
             
             if (objEggBase01.bhealth == 0) {
-                alarm[2] = room_speed * 4;
+                alarm_2_t = 4;
+                alarm_2_f = false;
             }
             
             audio_play_sound(sndBossHit, 1, false);
@@ -261,7 +251,7 @@ if (!dead) {
         }
     }
     
-    y += vsp;
+    y += (30 * vsp) * global.dt;
     
     if (!grounded) {
         if (flash &amp;&amp; !grounded_since_flash) {
@@ -269,14 +259,14 @@ if (!dead) {
         } else {
             sprite_index = sprite_jump;
         }
-        image_speed = 1;
+        image_speed = 30 * global.dt;
     }
     else if (hsp &gt; 4) {
         sprite_index = sprite_run;
-        image_speed = 1;
+        image_speed = 30 * global.dt;
     } else {
         sprite_index = sprite_walk;
-        image_speed = 0.2 + abs(hsp) / movespeed;
+        image_speed = (30 * (0.2 + abs(hsp) / movespeed)) * global.dt;
     }
     
     image_speed *= sign(hsp);
@@ -311,8 +301,8 @@ if (!dead) {
 
 if (dead) {
     sprite_index = sprSonicDie;
-    vsp += grav;
-    y+=vsp;  
+    vsp += (30 * grav) * global.dt;
+    y += (30 * vsp) * global.dt;  
 }
 </string>
           </argument>
@@ -462,12 +452,16 @@ if (rings &gt; 0) {
     rings = 0;
     flash = true;
     grounded_since_flash = false;
-    alarm[0] = room_speed * 3;
+    
+    alarm_0_t = 3;
+    alarm_0_f = false;
 } else {
     if (!dead) {
         audio_play_sound(sndSonicDie, 1, false);
         dead = true;
-        alarm[1] = room_speed * 3;    
+        
+        alarm_1_t = 3;
+        alarm_1_f = false;   
     }
 }
 </string>

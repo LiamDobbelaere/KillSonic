@@ -40,62 +40,16 @@ angle = 0;
 
 flash = false;
 flash_bit = false;
+flash_t = 0;
 
 bhealth = 5;
 
-alarm[1] = 5;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="1">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if (bhealth &lt;= 0) {
-    instance_create(x + random_range(-64, 64), y + random_range(-64, 64), objExplosion);
-    audio_play_sound(sndEggDefeat, 1, false);
-}
+alarm_1_t = 0.166;
+alarm_1_f = false;
 
-alarm[1] = 5;
+alarm_0_t = 0;
+alarm_0_f = true;
 
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>flash = false;
 </string>
           </argument>
         </arguments>
@@ -118,14 +72,57 @@ alarm[1] = 5;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (!boss_sequence) {
-    if (x &gt; 0 &amp;&amp; keyboard_check_direct(ord('A'))) x -= 5;
-    if (x &lt; room_width &amp;&amp; keyboard_check_direct(ord('D'))) x += 5;
-    if (y &gt; 0 &amp;&amp; keyboard_check_direct(ord('W'))) y -= 5;
-    if (y &lt; room_height &amp;&amp; keyboard_check_direct(ord('S'))) y += 5;
+            <string>///Alarms
+
+alarm_0_t -= global.dt;
+if (alarm_0_t &lt;= 0 &amp;&amp; !alarm_0_f) {    
+    flash = false;
+
+    alarm_0_f = true;
+}
+
+alarm_1_t -= global.dt;
+if (alarm_1_t &lt;= 0 &amp;&amp; !alarm_1_f) {    
+    if (bhealth &lt;= 0) {
+        instance_create(x + random_range(-64, 64), y + random_range(-64, 64), objExplosion);
+        audio_play_sound(sndEggDefeat, 1, false);
+    }
+    alarm_1_f = true;
+    
+    //Reset the alarm
+    alarm_1_t = 0.166;
+    alarm_1_f = false;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>image_speed = 30 * global.dt;
+
+if (!boss_sequence) {
+    if (x &gt; 0 &amp;&amp; keyboard_check_direct(ord('A'))) x -= 150 * global.dt;
+    if (x &lt; room_width &amp;&amp; keyboard_check_direct(ord('D'))) x += 150 * global.dt;
+    if (y &gt; 0 &amp;&amp; keyboard_check_direct(ord('W'))) y -= 150 * global.dt;
+    if (y &lt; room_height &amp;&amp; keyboard_check_direct(ord('S'))) y += 150 * global.dt;
 } else {
     if (y &lt; room_height /2) {
-        y+=10;
+        y+= 300 * global.dt;
     } else {
         if (boss_sequence_dir == -1) {    
             if (x &lt; 100) {
@@ -139,7 +136,7 @@ alarm[1] = 5;
             }
         }
         
-        x += 5 * boss_sequence_dir;
+        x += (150 * global.dt) * boss_sequence_dir;
     }
 }
 
@@ -147,7 +144,11 @@ if (flash) {
     if (flash_bit) sprite_index = sprEggBase01;
     else sprite_index = sprEggBase01Hit;
 
-    flash_bit = !flash_bit;
+    flash_t += global.dt;
+    if (flash_t &gt; 0.025) {
+        flash_bit = !flash_bit;
+        flash_t = 0;
+    }    
 } else {
     sprite_index = sprEggBase01
 }
@@ -179,7 +180,8 @@ if (flash) {
           <argument>
             <kind>1</kind>
             <string>flash = true;
-alarm[0] = room_speed;
+alarm_0_t = 1;
+alarm_0_f = false;
 </string>
           </argument>
         </arguments>
@@ -204,6 +206,29 @@ alarm[0] = room_speed;
             <kind>1</kind>
             <string>boss_sequence = true;
 boss_sequence_dir = 1;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="83">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>boss_save();
 </string>
           </argument>
         </arguments>

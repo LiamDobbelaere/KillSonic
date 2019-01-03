@@ -72,7 +72,7 @@ if (attachment != noone) {
 }
 
 if (global.enablemotors)
-    angle += motorspeed * (motordirection * -1);
+    angle += (motorspeed * 30 * global.dt) * (motordirection * -1);
 else angle = targetangle;
 
 if (angle &lt; 0) angle += 360;

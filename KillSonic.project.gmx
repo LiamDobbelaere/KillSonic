@@ -53,6 +53,8 @@
     <sprite>sprites\sprMapNode</sprite>
     <sprite>sprites\sprSliderKnob</sprite>
     <sprite>sprites\sprCharSel</sprite>
+    <sprite>sprites\sprSonicAI</sprite>
+    <sprite>sprites\sprTailsAI</sprite>
     <sprite>sprites\sprMotorDir</sprite>
     <sprite>sprites\sprShimmer</sprite>
   </sprites>
@@ -89,11 +91,14 @@
     <script>scripts\ai_reinforce_momentum.gml</script>
     <script>scripts\ai_close_to_left_edge.gml</script>
     <script>scripts\ai_edge_boundaries.gml</script>
+    <script>scripts\boss_save.gml</script>
+    <script>scripts\attachment_save.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fntText</font>
   </fonts>
   <objects name="objects">
+    <object>objects\objDeltaTime</object>
     <object>objects\objEggBase01</object>
     <object>objects\objWorkshop</object>
     <object>objects\objComponent</object>
@@ -123,6 +128,8 @@
     <object>objects\objMapNode</object>
     <object>objects\objMap</object>
     <object>objects\objWCharSel</object>
+    <object>objects\objWSonAI</object>
+    <object>objects\objWTailsAI</object>
     <object>objects\objWMotorDir</object>
     <object>objects\objMotorSlider</object>
   </objects>
