@@ -72,6 +72,9 @@ switch (my_sub) {
         break;
 }
 
+if (hovering) depth = -100000;
+else depth = -2000;
+
 global.sonic_ai_flag = my_sub;
 visible = global.play_against_flag != 1
 </string>

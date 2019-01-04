@@ -75,6 +75,9 @@ switch (my_sub) {
         break;
 }
 
+if (hovering) depth = -100000;
+else depth = -2000;
+
 global.play_against_flag = my_sub;
 </string>
           </argument>

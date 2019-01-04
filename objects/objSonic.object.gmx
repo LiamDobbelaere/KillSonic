@@ -140,10 +140,14 @@ if (tails) {
     sprite_walk = sprTailsWalk
     sprite_run = sprTailsRun
     sprite_jump = sprTailsJump
+    sprite_hurt = sprTailsHurt
+    sprite_die = sprTailsDie
 } else {
     sprite_walk = sprSonicWalk
     sprite_run = sprSonicRun
     sprite_jump = sprSonicJump
+    sprite_hurt = sprSonicHurt
+    sprite_die = sprSonicDie
 }
 </string>
           </argument>
@@ -255,7 +259,7 @@ if (!dead) {
     
     if (!grounded) {
         if (flash &amp;&amp; !grounded_since_flash) {
-            sprite_index = sprSonicHurt;
+            sprite_index = sprite_hurt;
         } else {
             sprite_index = sprite_jump;
         }
@@ -300,7 +304,7 @@ if (!dead) {
             <string>///Dead code
 
 if (dead) {
-    sprite_index = sprSonicDie;
+    sprite_index = sprite_die;
     vsp += (30 * grav) * global.dt;
     y += (30 * vsp) * global.dt;  
 }

@@ -53,11 +53,15 @@
   <instances>
     <instance objName="objWorkshop" x="0" y="0" name="inst_5F187EA2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objSelector" x="885" y="561" name="inst_82D60D6F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objWCharSel" x="928" y="32" name="inst_4CFF43B1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objWCharSel" x="672" y="32" name="inst_4CFF43B1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objMotorSlider" x="704" y="160" name="inst_4DACD447" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objWMotorDir" x="686" y="184" name="inst_4BCFBAFA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objWSonAI" x="736" y="32" name="inst_DC9E3FBB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objWTailsAI" x="832" y="32" name="inst_14556928" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objWSonAI" x="480" y="32" name="inst_DC9E3FBB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objWTailsAI" x="576" y="32" name="inst_14556928" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objWGo" x="896" y="32" name="inst_16AE6EC6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objWSave" x="256" y="32" name="inst_7026A82F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objWLoad" x="352" y="32" name="inst_F0FADA02" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objWEnvSel" x="800" y="32" name="inst_F911C4A1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

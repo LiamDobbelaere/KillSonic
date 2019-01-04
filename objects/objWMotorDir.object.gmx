@@ -76,6 +76,9 @@ if (shim &gt; 0.05) {
     shim = 0;
 }
 
+if (hovering) depth = -100000;
+else depth = -2000;
+
 if (sel_attachpoint != noone) {
     switch (my_sub) {
         case 0:
@@ -88,7 +91,6 @@ if (sel_attachpoint != noone) {
             break;
     }
 }
-
 </string>
           </argument>
         </arguments>

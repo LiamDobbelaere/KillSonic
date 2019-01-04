@@ -35,6 +35,8 @@ with (objEggBase01) {
     
 audio_play_sound(sndWorkshop, 1, true);
 global.enablemotors = false;
+
+
 </string>
           </argument>
         </arguments>
@@ -59,22 +61,20 @@ global.enablemotors = false;
             <kind>1</kind>
             <string>draw_set_font(global.font_outline);
 draw_set_halign(fa_left);
+draw_set_valign(fa_top);
 draw_set_color(c_white);
-draw_text(8, 8, 
+draw_text_transformed(8, 8, 
 "EDITOR CONTROLS
 Change part - Left/Right arrow keys
 Show attachment points - Hold Left CONTROL
 Select attachment point - Left click the attachment point
 Attach part - Right click selected attachment point
 Change att. point angle - Scroll over selected attachment point
-Set motor speed - Press M with attachment point selected
-Reverse motor - Press R with attachment point selected
 Preview motors - Hold SPACE
 Move Eggman - W/A/S/D
+", 1, 1, 0);
 
-FIGHT SONIC / RETURN TO WORKSHOP - ENTER
-");
-
+draw_text(room_width / 2, room_height / 2, ds_list_find_value(global.save_files, 0));
 </string>
           </argument>
         </arguments>
@@ -98,32 +98,6 @@ FIGHT SONIC / RETURN TO WORKSHOP - ENTER
           <argument>
             <kind>1</kind>
             <string>global.enablemotors = true;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="9" enumb="13">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>audio_stop_sound(sndWorkshop);
-global.enablemotors = true;
-global.spawner_rings = 0;
-room_goto(rmBoss);
 </string>
           </argument>
         </arguments>

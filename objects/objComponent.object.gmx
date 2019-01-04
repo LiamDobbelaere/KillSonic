@@ -27,6 +27,8 @@
             <kind>1</kind>
             <string>attachments = noone;
 angle = 0;
+
+depth = -instance_number(objComponent);
 </string>
           </argument>
         </arguments>

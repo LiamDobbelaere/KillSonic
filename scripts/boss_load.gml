@@ -1,9 +1,15 @@
+///boss_load(name)
+
 with (objComponent) {
     instance_destroy();
 }
 
-var map = json_decode(clipboard_get_text());
+var file = file_text_open_read(argument0);
+
+var map = json_decode(file_text_read_string(file));
 var list = ds_map_find_value(map, "boss");
+
+file_text_close(file);
 
 //Go through all the attachment points of the boss object
 for (var i = 0; i < ds_list_size(list); i++) {

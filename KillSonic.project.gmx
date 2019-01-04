@@ -50,13 +50,19 @@
     <sprite>sprites\sprTailsWalk</sprite>
     <sprite>sprites\sprTailsRun</sprite>
     <sprite>sprites\sprTailsJump</sprite>
+    <sprite>sprites\sprTailsHurt</sprite>
+    <sprite>sprites\sprTailsDie</sprite>
     <sprite>sprites\sprMapNode</sprite>
     <sprite>sprites\sprSliderKnob</sprite>
     <sprite>sprites\sprCharSel</sprite>
+    <sprite>sprites\sprEnvSel</sprite>
     <sprite>sprites\sprSonicAI</sprite>
     <sprite>sprites\sprTailsAI</sprite>
     <sprite>sprites\sprMotorDir</sprite>
     <sprite>sprites\sprShimmer</sprite>
+    <sprite>sprites\sprGo</sprite>
+    <sprite>sprites\sprLoadBoss</sprite>
+    <sprite>sprites\sprSaveBoss</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bgWorkshop</background>
@@ -66,10 +72,17 @@
     <background>background\bgChemicalPlant2</background>
     <background>background\bgEmeraldHill2</background>
     <background>background\bgChemicalBlock</background>
+    <background>background\bgEmeraldBlock</background>
     <background>background\bgChemicalGrass</background>
     <background>background\bgChemicalAqua</background>
     <background>background\bgChemicalCave</background>
     <background>background\bgMapTiles</background>
+    <background>background\bgOilOcean1</background>
+    <background>background\bgOilOcean2</background>
+    <background>background\bgOilBlock</background>
+    <background>background\bgMystic1</background>
+    <background>background\bgMystic2</background>
+    <background>background\bgMysticBlock</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -95,6 +108,7 @@
     <script>scripts\attachment_save.gml</script>
     <script>scripts\boss_load.gml</script>
     <script>scripts\attachment_load.gml</script>
+    <script>scripts\reload_saves.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fntText</font>
@@ -130,10 +144,16 @@
     <object>objects\objMapNode</object>
     <object>objects\objMap</object>
     <object>objects\objWCharSel</object>
+    <object>objects\objWEnvSel</object>
     <object>objects\objWSonAI</object>
+    <object>objects\objWGo</object>
+    <object>objects\objWSave</object>
+    <object>objects\objWLoad</object>
     <object>objects\objWTailsAI</object>
     <object>objects\objWMotorDir</object>
     <object>objects\objMotorSlider</object>
+    <object>objects\objSaveInput</object>
+    <object>objects\objLoadSelection</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rmGlobals</room>

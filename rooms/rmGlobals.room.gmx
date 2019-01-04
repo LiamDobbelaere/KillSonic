@@ -18,7 +18,13 @@ global.tails_ai_flag = 1;
 
 global.floor_sprite = sprChemicalPlantBlock;
 
+global.save_files = ds_list_create();
+reload_saves();
+
 global.font_outline = font_add_sprite(sprFontSonic, ord("*"), true, 1);
+
+global.environment = 0;
+
 room_goto_next();</code>
   <enableViews>0</enableViews>
   <clearViewBackground>-1</clearViewBackground>
