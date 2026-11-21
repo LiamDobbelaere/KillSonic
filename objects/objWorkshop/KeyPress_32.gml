@@ -1,0 +1,2 @@
+global.enablemotors = true;
+

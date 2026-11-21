@@ -1,0 +1,107 @@
+Converting GML script: D:\Git\KillSonic\mvc\scripts\create_attachment\create_attachment.gml
+Converted description /// @description create_attachment(xoffset, yoffset, parent)/// @param xoffset
+/// @param  yoffset
+/// @param  parent
+
+Converting GML script: D:\Git\KillSonic\mvc\scripts\point_angle\point_angle.gml
+Converted description /// @description point_angle(pivotx, pivoty, originalx, originaly, angle)/// @param pivotx
+/// @param  pivoty
+/// @param  originalx
+/// @param  originaly
+/// @param  angle
+
+Converting GML script: D:\Git\KillSonic\mvc\scripts\boss_save\boss_save.gml
+Converted description /// @description boss_save(name)/// @param name
+
+Converting GML script: D:\Git\KillSonic\mvc\scripts\attachment_save\attachment_save.gml
+Converted description /// @description attachment_save(attachment_instance)/// @param attachment_instance
+
+Converting GML script: D:\Git\KillSonic\mvc\scripts\boss_load\boss_load.gml
+Converted description /// @description boss_load(name)/// @param name
+
+Converting GML script: D:\Git\KillSonic\mvc\scripts\attachment_load\attachment_load.gml
+Converted description /// @description attachment_load(parentobj, list)/// @param parentobj
+/// @param  list
+
+Converting GML script: D:\Git\KillSonic\mvc\scripts\reload_saves\reload_saves.gml
+String not found: ConversionLog_ConvertedString 5 '' ""
+String not found: ConversionLog_ConvertedString 8 'Adding -' "Adding -"
+String not found: ConversionLog_ConvertedString 8 '- to character_array' "- to character_array"
+
+GameMaker Studio 1 font texture has been backed up at D:\Git\KillSonic\mvc\fonts\fntText\fntText.gms1.png
+Converting GML script: D:\Git\KillSonic\mvc\objects\objEggBase01\Step_1.gml
+Converted description /// @description Alarms
+String not found: ConversionLog_ConvertedString 26 'A' "A"
+String not found: ConversionLog_ConvertedString 27 'D' "D"
+String not found: ConversionLog_ConvertedString 28 'W' "W"
+String not found: ConversionLog_ConvertedString 29 'S' "S"
+
+Converting GML script: D:\Git\KillSonic\mvc\objects\objLaser\Step_0.gml
+Converted description /// @description Alarms
+
+Converting GML script: D:\Git\KillSonic\mvc\objects\objBossRoom\Step_0.gml
+Converted builtin - line 5: background_index[2] -> __background_get( e__BG.Index, 2 )
+Converted builtin - line 13: background_hspeed[0] = -30 * global.dt -> __background_set( e__BG.HSpeed, 0, -30 * global.dt )
+Converted builtin - line 14: background_hspeed[1] = -60 * global.dt -> __background_set( e__BG.HSpeed, 1, -60 * global.dt )
+Converted builtin - line 15: background_hspeed[2] = -240 * global.dt -> __background_set( e__BG.HSpeed, 2, -240 * global.dt )
+Converted description /// @description Alarms
+
+Converting GML script: D:\Git\KillSonic\mvc\objects\objSonic\Step_0.gml
+Converted description /// @description Alarms
+
+Converting GML script: D:\Git\KillSonic\mvc\objects\objSonic\Other_10.gml
+Converted description /// @description Ring loss
+
+Converting GML script: D:\Git\KillSonic\mvc\objects\objGround\Create_0.gml
+Converted builtin - line 1: background_index[2] -> __background_get( e__BG.Index, 2 )
+Converted builtin - line 4: background_index[2] -> __background_get( e__BG.Index, 2 )
+
+Converting GML script: D:\Git\KillSonic\mvc\rooms\rmBoss\RoomCreationCode.gml
+Converted builtin - line 44: background_index[2] -> __background_get( e__BG.Index, 2 )
+Converted builtin - line 3: background_index[0] = bgEmeraldHill -> __background_set( e__BG.Index, 0, bgEmeraldHill )
+Converted builtin - line 7: background_index[1] = bgEmeraldHill2 -> __background_set( e__BG.Index, 1, bgEmeraldHill2 )
+Converted builtin - line 10: background_index[2] = bgEmeraldBlock -> __background_set( e__BG.Index, 2, bgEmeraldBlock )
+Converted builtin - line 13: background_index[0] = bgChemicalPlant -> __background_set( e__BG.Index, 0, bgChemicalPlant )
+Converted builtin - line 17: background_index[1] = bgChemicalPlant2 -> __background_set( e__BG.Index, 1, bgChemicalPlant2 )
+Converted builtin - line 20: background_index[2] = bgChemicalBlock -> __background_set( e__BG.Index, 2, bgChemicalBlock )
+Converted builtin - line 23: background_index[0] = bgMystic1 -> __background_set( e__BG.Index, 0, bgMystic1 )
+Converted builtin - line 27: background_index[1] = bgMystic2 -> __background_set( e__BG.Index, 1, bgMystic2 )
+Converted builtin - line 30: background_index[2] = bgMysticBlock -> __background_set( e__BG.Index, 2, bgMysticBlock )
+Converted builtin - line 33: background_index[0] = bgOilOcean1 -> __background_set( e__BG.Index, 0, bgOilOcean1 )
+Converted builtin - line 37: background_index[1] = bgOilOcean2 -> __background_set( e__BG.Index, 1, bgOilOcean2 )
+Converted builtin - line 40: background_index[2] = bgOilBlock -> __background_set( e__BG.Index, 2, bgOilBlock )
+Converted builtin - line 4: background_y[0] = 0 -> __background_set( e__BG.Y, 0, 0 )
+Converted builtin - line 8: background_y[1] = 70 -> __background_set( e__BG.Y, 1, 70 )
+Converted builtin - line 14: background_y[0] = 135 -> __background_set( e__BG.Y, 0, 135 )
+Converted builtin - line 18: background_y[1] = 385 -> __background_set( e__BG.Y, 1, 385 )
+Converted builtin - line 24: background_y[0] = 0 -> __background_set( e__BG.Y, 0, 0 )
+Converted builtin - line 28: background_y[1] = 545 -> __background_set( e__BG.Y, 1, 545 )
+Converted builtin - line 34: background_y[0] = 0 -> __background_set( e__BG.Y, 0, 0 )
+Converted builtin - line 38: background_y[1] = 260 -> __background_set( e__BG.Y, 1, 260 )
+Converted builtin - line 44: background_y[2] = room_height - background_get_height(__background_get( e__BG.Index, 2 )) -> __background_set( e__BG.Y, 2, room_height - background_get_height(__background_get( e__BG.Index, 2 )) )
+
+Missing audiogroup for sound: 'sndWorkshop' - setting to default audio group
+Missing audiogroup for sound: 'sndBossBattle' - setting to default audio group
+Missing audiogroup for sound: 'sndSonicJump' - setting to default audio group
+Missing audiogroup for sound: 'sndBossHit' - setting to default audio group
+Missing audiogroup for sound: 'sndRing' - setting to default audio group
+Missing audiogroup for sound: 'sndRingLoss' - setting to default audio group
+Missing audiogroup for sound: 'sndSonicDie' - setting to default audio group
+Missing audiogroup for sound: 'sndStageClear' - setting to default audio group
+Missing audiogroup for sound: 'sndLaser' - setting to default audio group
+Missing audiogroup for sound: 'sndEggDefeat' - setting to default audio group
+Game speed set to 60
+Added compatibility script 'action\action_kill_object.gml'
+Added compatibility script 'background\background_get_height.gml'
+Added compatibility script 'background\__background_get.gml'
+Added compatibility script 'background\__background_get_element.gml'
+Added compatibility script 'background\__background_get_internal.gml'
+Added compatibility script 'background\__background_set.gml'
+Added compatibility script 'background\__background_set_element.gml'
+Added compatibility script 'background\__background_set_internal.gml'
+Added compatibility script 'instance\instance_create.gml'
+Added compatibility script 'object\object_get_depth.gml'
+Added compatibility script 'action\__init_action.gml'
+Added compatibility script 'background\__init_background.gml'
+Added compatibility script '__init_global.gml'
+Added compatibility script '__global_object_depths.gml'

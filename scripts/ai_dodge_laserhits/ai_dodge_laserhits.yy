@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"ai_dodge_laserhits",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"ai_dodge_laserhits",
+  "parent":{
+    "name":"Scripts",
+    "path":"folders/Scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

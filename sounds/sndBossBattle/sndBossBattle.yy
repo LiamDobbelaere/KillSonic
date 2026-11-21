@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"sndBossBattle",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":1,
+  "compression":3,
+  "compressionQuality":6,
+  "conversionMode":0,
+  "duration":0.0,
+  "exportDir":"",
+  "name":"sndBossBattle",
+  "parent":{
+    "name":"Sounds",
+    "path":"folders/Sounds.yy",
+  },
+  "preload":true,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"sndBossBattle",
+  "volume":1.0,
+}
