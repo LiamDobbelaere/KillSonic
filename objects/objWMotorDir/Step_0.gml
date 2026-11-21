@@ -22,16 +22,11 @@ if (shim > 0.05) {
 if (hovering) depth = -100000;
 else depth = -2000;
 
+// Show the selected point's direction. The point is the source of truth;
+// only a click on this button (Mouse_7) or the R key changes it.
 if (sel_attachpoint != noone) {
-    switch (my_sub) {
-        case 0:
-            sel_attachpoint.motordirection = 1
-            tooltip_text = "Motor is forward"
-            break;
-        case 1: 
-            sel_attachpoint.motordirection = -1
-            tooltip_text = "Motor is reverse"
-            break;
-    }
+    my_sub = (sel_attachpoint.motordirection == 1) ? 0 : 1;
+    tooltip_text = (my_sub == 0) ? "Motor is forward" : "Motor is reverse";
 }
 
+if (!mouse_check_button(mb_left)) armed = false;

@@ -9,3 +9,5 @@ if (shim > 0.05) {
 if (hovering) depth = -100000;
 else depth = -2000;
 
+
+if (!mouse_check_button(mb_left)) armed = false;

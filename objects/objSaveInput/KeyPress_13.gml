@@ -1,5 +1,5 @@
-boss_save(keyboard_string);
+// Only save valid file names; keep the dialog open if the name is empty
+var name = save_name_clean(keyboard_string);
+if (name == "") exit;
 
-instance_destroy();
-
-
+if (boss_save(name)) instance_destroy();

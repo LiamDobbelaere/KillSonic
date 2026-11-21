@@ -39,7 +39,10 @@ if (room == rmWorkshop) {
 	// ---- Save dialog (objSaveInput): on-screen keyboard
 	var save_open = instance_exists(objSaveInput);
 	if (save_open && !save_was_open) {
-		keyboard_string = "BOSS" + string(ds_list_size(global.save_files) + 1);
+		// Suggest the first BOSSn that isn't taken, so OK never overwrites a save
+		var sn = ds_list_size(global.save_files) + 1;
+		while (save_name_taken("BOSS" + string(sn) + ".boss")) sn++;
+		keyboard_string = "BOSS" + string(sn);
 	}
 	save_was_open = save_open;
 

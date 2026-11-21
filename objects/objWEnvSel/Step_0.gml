@@ -26,3 +26,5 @@ else depth = -2000;
 
 global.environment = my_sub;
 
+
+if (!mouse_check_button(mb_left)) armed = false;

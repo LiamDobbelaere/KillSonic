@@ -1,3 +1,4 @@
+if (other.dead) exit;   // dead characters don't collect rings
 with (other) {
     rings++;
 }

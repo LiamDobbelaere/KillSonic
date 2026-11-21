@@ -15,9 +15,13 @@ if (alarm_1_t <= 0 && !alarm_1_f) {
         if (!dead) all_dead = false;
     }
 
-    if (all_dead) {
+    // ...and not after Sonic already beat Eggman, and only once
+    var boss_alive = instance_exists(objEggBase01) && objEggBase01.bhealth > 0;
+    if (all_dead && boss_alive && !audio_is_playing(sndStageClear)) {
         audio_stop_sound(sndBossBattle);
         audio_play_sound(sndStageClear, 1, false);
+        // back to the workshop once the jingle is done (objBossRoom Step)
+        with (objBossRoom) if (end_t < 0) end_t = 0;
     }
 
     alarm_1_f = true;
@@ -68,15 +72,9 @@ if (!dead) {
     key_left = 0;
     key_right = 0;
     key_jump = 0;
-    
+
     if (global.sonic_ai_flag == 1 && !tails || global.tails_ai_flag == 1 && tails) ai_think()
-    
-    if (!grounded_since_flash) {
-        key_left = 0;
-        key_right = 0;
-        key_jump = 0;
-    }
-    
+
     if (global.sonic_ai_flag == 0 && !tails || global.tails_ai_flag == 0 && tails) {
         if (tails && global.play_against_flag == 2) {
             // Q or A for left so both AZERTY and QWERTY work.
@@ -91,63 +89,72 @@ if (!dead) {
             key_jump = (keyboard_check_pressed(vk_space) || global.touch_p1_jump);
         }
     }
-    
+
+    // Hit stun: no control until landing again (AI and human players)
+    if (!grounded_since_flash) {
+        key_left = 0;
+        key_right = 0;
+        key_jump = 0;
+    }
+
     move = key_left + key_right;
-    
+
     if (grounded)
     hsp = lerp(hsp, move * movespeed, 1.8 * global.dt) - 30*0.5*global.dt; //0.06 for 30fps
     else
     hsp = lerp(hsp, move * movespeed, 6 * global.dt) - 30*0.5*global.dt; //0.2 for 30fps
-    
+
     if (vsp < 10) vsp += (30 * grav) * global.dt;
-    
-    if (place_meeting(x, y + 1, objWall)) {
+
+    // vsp >= 0: don't cancel a knockback hop that started this frame on the ground
+    if (vsp >= 0 && place_meeting(x, y + 1, objWall)) {
         vsp = key_jump * -jumpspeed;
-        
+
         grounded_since_flash = true;
         grounded = true;
     } else {
         if (grounded && vsp < 0) {
             audio_play_sound(sndSonicJump, 1, false);
-        }    
-    
+        }
+
         grounded = false;
     }
-    
-    // Step size must never be 0: on HTML5 delta_time can be 0 for a frame,
-    // which made these loops run forever and freeze the game.
-    var col_step = max(30 * global.dt, 0.5);
 
-    if (place_meeting(x + hsp, y, objWall)) {
+    // Collisions use the real distance moved this frame (30 * speed * dt), so
+    // low frame rates can't sink Sonic into the ground. The contact loops step
+    // 1px at a time (never 0, so a dt of 0 can't hang them) with a guard.
+    var dx = 30 * hsp * global.dt;
+    if (dx != 0 && place_meeting(x + dx, y, objWall)) {
         var guard = 0;
-        while (hsp != 0 && !place_meeting(x + sign(hsp), y, objWall) && guard++ < 1000) {
-            x += col_step * sign(hsp);
+        while (!place_meeting(x + sign(dx), y, objWall) && guard++ < 1000) {
+            x += sign(dx);
         }
-        
         hsp = 0;
+        dx = 0;
     }
-    
-    x += (30 * hsp) * global.dt;
+
+    x += dx;
     x = clamp(x, 10, room_width - 10);
-    
-    if (place_meeting(x, y + vsp, objWall)) {
+
+    var dy = 30 * vsp * global.dt;
+    if (dy != 0 && place_meeting(x, y + dy, objWall)) {
         var guard_v = 0;
-        while (vsp != 0 && !place_meeting(x, y + sign(vsp), objWall) && guard_v++ < 1000) {
-            y += col_step * sign(vsp);
+        while (!place_meeting(x, y + sign(dy), objWall) && guard_v++ < 1000) {
+            y += sign(dy);
         }
-        
         vsp = 0;
+        dy = 0;
     }
-    
-    if (place_meeting(x, y + vsp, objEggBase01)) {
+
+    if (place_meeting(x, y + dy, objEggBase01)) {
         if (!objEggBase01.flash && grounded_since_flash) {
             objEggBase01.bhealth--;
-            
+
             if (objEggBase01.bhealth == 0) {
                 alarm_2_t = 4;
                 alarm_2_f = false;
             }
-            
+
             audio_play_sound(sndBossHit, 1, false);
             vsp *= -1;
             with (objEggBase01) {
@@ -155,9 +162,13 @@ if (!dead) {
             }
         }
     }
-    
-    y += (30 * vsp) * global.dt;
-    
+
+    y += 30 * vsp * global.dt;   // vsp may have flipped on a boss hit above
+
+    // Safety net: never stay inside the ground
+    var guard_u = 0;
+    while (place_meeting(x, y, objWall) && guard_u++ < 64) y -= 1;
+
     if (!grounded) {
         if (flash && !grounded_since_flash) {
             sprite_index = sprite_hurt;
@@ -173,9 +184,9 @@ if (!dead) {
         sprite_index = sprite_walk;
         image_speed = (30 * (0.2 + abs(hsp) / movespeed)) * global.dt;
     }
-    
+
     image_speed *= sign(hsp);
-    
+
     if (flash) {
         visible = !visible;
     } else {
@@ -188,6 +199,5 @@ if (!dead) {
 if (dead) {
     sprite_index = sprite_die;
     vsp += (30 * grav) * global.dt;
-    y += (30 * vsp) * global.dt;  
+    y += (30 * vsp) * global.dt;
 }
-

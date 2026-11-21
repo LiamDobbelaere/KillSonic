@@ -14,12 +14,18 @@ function boss_save(argument0) {
 	}
 
 	var file = file_text_open_write(name + ".boss");
+	if (file < 0) {
+		// Could not create the file: don't list a save that doesn't exist
+		ds_map_destroy(map);
+		return false;
+	}
 	file_text_write_string(file, json_encode(map));
 	file_text_close(file);
 
 	save_index_add(name + ".boss");
 
 	ds_map_destroy(map);
+	return true;
 
 
 

@@ -7,3 +7,4 @@ my_sub = 0;
 tooltip_text = "Motor is forward"
 
 
+armed = false;   // set when a press starts on this button

@@ -23,3 +23,5 @@ else depth = -2000;
 
 global.play_against_flag = my_sub;
 
+
+if (!mouse_check_button(mb_left)) armed = false;

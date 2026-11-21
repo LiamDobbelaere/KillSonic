@@ -23,10 +23,14 @@ if (alarm_1_t <= 0 && !alarm_1_f) {
 image_speed = 30 * global.dt;
 
 if (!boss_sequence) {
+    if (workshop_dialog_open()) {
+        // W/A/S/D are letters of the save name, not Eggman movement
+    } else {
     if (x > 0 && keyboard_check_direct(ord("A"))) x -= 150 * global.dt;
     if (x < room_width && keyboard_check_direct(ord("D"))) x += 150 * global.dt;
     if (y > 0 && keyboard_check_direct(ord("W"))) y -= 150 * global.dt;
     if (y < room_height && keyboard_check_direct(ord("S"))) y += 150 * global.dt;
+    }
 } else {
     if (y < room_height /2) {
         y+= 300 * global.dt;

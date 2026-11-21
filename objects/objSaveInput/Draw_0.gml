@@ -8,7 +8,8 @@ draw_set_color(c_yellow);
 draw_set_alpha(1);
 draw_text_transformed(room_width / 2, room_height / 2 - 64, string_hash_to_newline("Name your creation"), 4, 4, 0);
 draw_set_color(c_white);
-draw_text_transformed(room_width / 2, room_height / 2, string_hash_to_newline(keyboard_string), 4, 4, 0);
+// Show the name exactly as it will be saved
+draw_text_transformed(room_width / 2, room_height / 2, save_name_clean(keyboard_string), 4, 4, 0);
 
 
 

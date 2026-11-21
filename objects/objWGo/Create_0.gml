@@ -6,3 +6,4 @@ pressing = false;
 tooltip_text = "Start battle!"
 my_sub = 0;
 
+armed = false;   // set when a press starts on this button

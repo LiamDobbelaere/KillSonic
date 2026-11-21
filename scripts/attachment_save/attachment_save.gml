@@ -4,7 +4,7 @@ function attachment_save(argument0) {
 	var attachment_instance = argument0;
 	var attachment_data = ds_map_create();
 
-	ds_map_add(attachment_data, "angle", argument0.angle);
+	ds_map_add(attachment_data, "angle", argument0.targetangle);   // rest angle, even while motors spin
 	ds_map_add(attachment_data, "motorspeed", argument0.motorspeed);
 	ds_map_add(attachment_data, "motordirection", argument0.motordirection);
 

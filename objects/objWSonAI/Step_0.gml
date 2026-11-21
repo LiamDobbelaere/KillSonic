@@ -21,3 +21,5 @@ else depth = -2000;
 global.sonic_ai_flag = my_sub;
 visible = global.play_against_flag != 1
 
+
+if (!mouse_check_button(mb_left)) armed = false;

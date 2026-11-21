@@ -22,6 +22,7 @@ image_angle = angle;
 
 visible = !instance_exists(objBossRoom)// && (keyboard_check_direct(vk_lcontrol) || selected);
 
-if (selected) image_single = 1;
-else image_single = 0;
+// GMS1's image_single does nothing in GMS2 (the sprite animated every frame)
+image_speed = 0;
+image_index = selected ? 1 : 0;
 

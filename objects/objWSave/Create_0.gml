@@ -6,3 +6,4 @@ pressing = false;
 tooltip_text = "Save creation"
 my_sub = 0;
 
+armed = false;   // set when a press starts on this button

@@ -14,3 +14,13 @@ __background_set( e__BG.HSpeed, 0, -30 * global.dt );
 __background_set( e__BG.HSpeed, 1, -60 * global.dt );
 __background_set( e__BG.HSpeed, 2, -240 * global.dt );
 
+
+// Everyone died: return to the workshop once the jingle has finished
+// (at least 1s, at most 10s in case audio is unavailable)
+if (end_t >= 0) {
+    end_t += global.dt;
+    if (end_t > 1 && (!audio_is_playing(sndStageClear) || end_t > 10)) {
+        end_t = -1;
+        event_user(0);
+    }
+}
