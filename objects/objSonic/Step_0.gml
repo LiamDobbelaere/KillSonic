@@ -81,13 +81,14 @@ if (!dead) {
         if (tails && global.play_against_flag == 2) {
             // Q or A for left so both AZERTY and QWERTY work.
             // vk_shift instead of vk_lshift: HTML5 can't tell left/right shift apart.
-            key_left = -(keyboard_check(ord("Q")) || keyboard_check(ord("A")));
-            key_right = keyboard_check(ord("D"));
-            key_jump = keyboard_check_pressed(vk_shift);
+            // global.touch_p* are set by objTouch's on-screen pads (always false on desktop).
+            key_left = -(keyboard_check(ord("Q")) || keyboard_check(ord("A")) || global.touch_p2_left);
+            key_right = (keyboard_check(ord("D")) || global.touch_p2_right);
+            key_jump = (keyboard_check_pressed(vk_shift) || global.touch_p2_jump);
         } else {
-            key_left = -keyboard_check(vk_left);
-            key_right = keyboard_check(vk_right);
-            key_jump = keyboard_check_pressed(vk_space);    
+            key_left = -(keyboard_check(vk_left) || global.touch_p1_left);
+            key_right = (keyboard_check(vk_right) || global.touch_p1_right);
+            key_jump = (keyboard_check_pressed(vk_space) || global.touch_p1_jump);
         }
     }
     

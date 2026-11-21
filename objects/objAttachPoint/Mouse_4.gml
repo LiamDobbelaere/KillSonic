@@ -1,4 +1,5 @@
 if (instance_exists(objBossRoom)) exit;
+if (global.touch_mode && global.touch_block) exit;   // tap landed on a touch control / dialog / palette
 
 if (motordirection == 1) {
     objWMotorDir.my_sub = 0

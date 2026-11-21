@@ -1,3 +1,6 @@
+// On touch devices objTouch draws its own toolbar here; the keyboard/mouse help doesn't apply.
+if (global.touch_mode) exit;
+
 draw_set_font(global.font_outline);
 draw_set_halign(fa_left);
 draw_set_valign(fa_top);
