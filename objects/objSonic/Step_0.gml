@@ -79,9 +79,11 @@ if (!dead) {
     
     if (global.sonic_ai_flag == 0 && !tails || global.tails_ai_flag == 0 && tails) {
         if (tails && global.play_against_flag == 2) {
-            key_left = -keyboard_check(ord("Q"));
+            // Q or A for left so both AZERTY and QWERTY work.
+            // vk_shift instead of vk_lshift: HTML5 can't tell left/right shift apart.
+            key_left = -(keyboard_check(ord("Q")) || keyboard_check(ord("A")));
             key_right = keyboard_check(ord("D"));
-            key_jump = keyboard_check_pressed(vk_lshift);    
+            key_jump = keyboard_check_pressed(vk_shift);
         } else {
             key_left = -keyboard_check(vk_left);
             key_right = keyboard_check(vk_right);
