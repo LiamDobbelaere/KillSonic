@@ -1,34 +1,20 @@
-var spr = sprite_index;
-var ox = sprite_get_xoffset(spr);
-var oy = sprite_get_yoffset(spr);
-var w = sprite_get_width(spr);
-var h = sprite_get_height(spr);
+// Selected part preview in a box, bottom right (as in version 2).
+var box_size = 128;
+var box_x1 = room_width - 18 - box_size;
+var box_y1 = 544;
+var box_x2 = box_x1 + box_size;
+var box_y2 = box_y1 + box_size;
 
-draw_sprite(sprite_index, -1, x, y);
-
-/*
-draw_set_color(c_black);
-draw_set_alpha(0.7);
-draw_rectangle_color(x - sprite_get_xoffset(spr),  
-y - sprite_get_yoffset(spr),  
-x + sprite_get_width(spr) - sprite_get_xoffset(spr),
-y + sprite_get_height(spr) - sprite_get_yoffset(spr),
-c_black, c_gray, c_black, c_gray, false);
-
-draw_self();
-
+draw_set_alpha(0.4);
 draw_set_color(c_gray);
-draw_set_alpha(0.7);
-draw_rectangle(x - sprite_get_xoffset(spr),  
-y - sprite_get_yoffset(spr),  
-x + sprite_get_width(spr) - sprite_get_xoffset(spr),
-y + sprite_get_height(spr) - sprite_get_yoffset(spr),
-true);
-
-draw_set_color(c_black);
+draw_rectangle(box_x1, box_y1, box_x2, box_y2, false);
+draw_set_alpha(0.8);
+draw_set_color(c_ltgray);
+draw_rectangle(box_x1, box_y1, box_x2, box_y2, true);
 draw_set_alpha(1);
-*/
-//draw_sprite(spr, 0, x, y);
 
-/* */
-/*  */
+// Centre the sprite's full image in the box, respecting its origin
+var spr = sprite_index;
+var draw_x = (box_x1 + box_x2) / 2 - sprite_get_width(spr) / 2 + sprite_get_xoffset(spr);
+var draw_y = (box_y1 + box_y2) / 2 - sprite_get_height(spr) / 2 + sprite_get_yoffset(spr);
+draw_sprite(spr, -1, draw_x, draw_y);

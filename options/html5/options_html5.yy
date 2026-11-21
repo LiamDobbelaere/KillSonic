@@ -19,7 +19,7 @@
   "option_html5_jsprepend":"",
   "option_html5_loadingbar":"",
   "option_html5_localrunalert":true,
-  "option_html5_outputdebugtoconsole":true,
+  "option_html5_outputdebugtoconsole":false,
   "option_html5_outputname":"index.html",
   "option_html5_scale":0,
   "option_html5_splash_png":"${base_options_dir}/html5/splash.png",
